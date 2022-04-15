@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+  letter-spacing: 2px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #bfb6d2;
+  /*background-image: url("data:image/svg+xml,%3Csvg width='12' height='24' viewBox='0 0 12 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233e187a' fill-opacity='1'%3E%3Cpath d='M2 0h2v12H2V0zm1 20c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM9 8c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm-1 4h2v12H8V12z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); 
+ */
+}
+
+.container {
+  width: 450px;
+  height: 450px;
+  background: rgba(93, 32, 172, 0.877);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 14px;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.4);
+  padding-top: 2px;
+}
+
+h1 {
+  letter-spacing: 2px;
+  padding-top: 5px;
+  padding-bottom: 0px;
+  color: rgb(22, 22, 22);
+}
+a {
+  letter-spacing: 1px;
+  padding-top: 3px;
+  color: rgb(77, 215, 8);
+  font-weight: 600px;
+}
+
+form {
+  width: 90%;
+  padding-bottom: 20px;
+}
+
+.form-group {
+  height: 65px;
+}
+
+label {
+  position: relative;
+  bottom: 4px;
+  font-size: 0.96rem;
+}
+
+input {
+  width: 100%;
+  height: 34px;
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 5px;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.3;
+}
+
+button {
+  cursor: pointer;
+  color: white;
+  background: #462a46;
+  border: none;
+  border-radius: 5px;
+  height: 50px;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  letter-spacing: 1.5px;
+  margin-top: 5px;
+  border: 1px solid #1b1b1b;
+  transition: all 0.2s;
+}
+
+button:hover {           /*this line specifies -> when the cursor is hovering over the button,hover working on <button> tag*/
+  background: rgb(96, 90, 163);
+  color: white;
+}
+
+button:focus {
+  outline: none;
+}
+input:valid{
+  border: 2px solid rgb(26, 242, 40);
+}
+input:invalid{
+  border: 2px solid red;
+}
+
+#message {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  font-weight: bold;
+  padding-bottom: 10px;
+  color: rgb(9, 255, 0);
+}
+#redirect {
+  text-align: center;
+}

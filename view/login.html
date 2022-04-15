@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+
+    <!-- main css -->
+    <link rel="stylesheet" href="./indexCSS.css" />
+    <title> LOG IN </title>
+  </head>
+  <body>
+    <div class="container">
+      <h1> Log IN </h1>    
+      <h3 id="message"></h3>
+      <form id="form" >
+        <div class="form-group" >  
+            <label for="name"> Name</label> <!--name="" attribute will carry the value of the input field-->
+            <input 
+              id="name" 
+              type="text"
+              name="name"  
+              placeholder="Full name" 
+            /> 
+        </div>
+        <div class="form-group">
+            <label for="password1"> Password </label>
+            <input id="password1" 
+              type="password" 
+              name="pass" 
+              placeholder="YOUR password" 
+        
+            /> 
+        </div>
+        <button type="submit" name="login" > LOG IN </button>
+        <h3 id="redirect">  </h3>
+      </form>
+  </div>
+    <!-- axios -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+      integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer">
+    </script>
+    <script type="module" src="./authentinicate.js"></script>
+  </body>
+</html>
