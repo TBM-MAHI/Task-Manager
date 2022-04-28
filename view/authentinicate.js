@@ -45,12 +45,18 @@ form.addEventListener('submit', async (ev) => {
           const password = form.pass.value;
           console.log(name + " -- " + password);
       try {
+        let U_ID;
             await axios.get(`/tasks/login/${name}/${password}`)
               .then((res) => {
-                console.log(res);
+                console.log(res.data);
+                const { getUser: { _id:UID } } = res.data;  
+              //  console.log(getUser)  
+                console.log(typeof (UID))
+                U_ID = UID;
               })
+       
               msg.innerHTML = "Validation Successful!";
-              let  ht = `<a href="Alltasks.html?user=${name}" > View ToDo List Here </a>`
+              let  ht = `<a href="Alltasks.html?user=${name}&id=${U_ID}" > View ToDo List Here </a>`
               h3.innerHTML = ht;
        }
           catch (error) {

@@ -1,25 +1,26 @@
-
-const tasksDOM = document.querySelector('.tasks')
-const loadingDOM = document.querySelector('.loading-text')
+const tasksDOM = document.querySelector('.tasks')       // query selector does not returns HTMLCollection
+const loadingDOM = document.querySelector('.loading-text') // direcly returns the HTML element
 const formDOM = document.querySelector('.task-form')
 const taskInputDOM = document.querySelector('.task-input')
 const formAlertDOM = document.querySelector('.form-alert')
 const userTitle = document.getElementById('user-name');
+const logoutbtn = document.querySelector('.log-out')
 const params = window.location.search
-const user = new URLSearchParams(params).get('user');
-console.log(user)
+const userName = new URLSearchParams(params).get('user');
+const userID = new URLSearchParams(params).get('id');
+console.log(userName + "++" + userID);
 // Load all tasks
 const showTasks = async () => {
   loadingDOM.style.visibility = 'visible'
-  userTitle.innerHTML = `${user}'s To-do List `;
+  userTitle.innerHTML = `${userName}'s To-do List `;
   try {
-    const { data: tasks } = await axios.get('/tasks/all')
-    console.log(tasks)
-    const allTask = Object.values(tasks)[0]; // allTask-an array of objects
-    
-    if (tasks.length < 1) {
+    const { data: tasks } = await axios.get(`/tasks/all/${userID}`)
+    let { alltaskz: allTask } = tasks; //{object : array}
+    console.log(allTask)
+    console.log(typeof(allTask))
+    if (allTask.length < 1) {
       console.log('No tasks');
-      tasksDOM.innerHTML = '<h5 class="empty-list">No tasks ere in your list</h5>'
+      tasksDOM.innerHTML = '<h3 class="empty-list">No tasks in your Todo-list</h3>'
       loadingDOM.style.visibility = 'hidden'
       return
     }
@@ -78,7 +79,7 @@ formDOM.addEventListener('submit', async (e) => {
   const name = taskInputDOM.value;
 
   try {
-    await axios.post('/tasks/all', { name })
+    await axios.post('/tasks/all', { name,userID, userName})
     showTasks()
     taskInputDOM.value = ''
     formAlertDOM.style.display = 'block'
@@ -94,3 +95,5 @@ formDOM.addEventListener('submit', async (e) => {
     formAlertDOM.classList.remove('text-success')
   }, 3000)
 })
+
+
