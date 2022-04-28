@@ -4,57 +4,58 @@ const taskCompletedDOM = document.querySelector('.task-edit-completed')
 const editFormDOM = document.querySelector('.single-task-form')
 const editBtnDOM = document.querySelector('.task-edit-btn')
 const formAlertDOM = document.querySelector('.form-alert')
-
+const backto_Task = document.querySelector('.back-to-tasks')
 const params = window.location.search
 const id = new URLSearchParams(params).get('id')
 let tempName
 
 const showTask = async () => {
   try {
-    const {
-      data: { task },
-    } = await axios.get(`/api/v1/tasks/${id}`)
-    const { _id: taskID, completed, name } = task
-
+    //getting a single tasks all in
+    const { data: {SingleTask: Atask } } = await axios.get(`/tasks/${id}`)  
+   console.log(typeof(Atask))  // object
+    const { _id: taskID, isCompleted, name,userName,userID } = Atask
     taskIDDOM.textContent = taskID
     taskNameDOM.value = name
     tempName = name
-    if (completed) {
+    if (isCompleted) {
       taskCompletedDOM.checked = true
     }
-  } catch (error) {
+    let htm = `<a href="Alltasks.html?user=${userName}&id=${userID}" class="btn back-link"> Back to Tasks</a>`;
+    //console.log(backto_Task);
+    backto_Task.innerHTML = htm;
+  }
+  catch (error) {
     console.log(error)
   }
 }
 
-showTask()
+showTask();
 
-editFormDOM.addEventListener('submit', async (e) => {
+  editFormDOM.addEventListener('submit', async (e) => {
   editBtnDOM.textContent = 'Loading...'
   e.preventDefault()
   try {
     const taskName = taskNameDOM.value
-    const taskCompleted = taskCompletedDOM.checked
-
-    const {
-      data: { task },
-    } = await axios.patch(`/api/v1/tasks/${id}`, {
-      name: taskName,
-      completed: taskCompleted,
-    })
-
-    const { _id: taskID, completed, name } = task
-
+    const taskCompleted = taskCompletedDOM.checked// wheather the checkbox is marked. Ticked-True, Unticked-False
+    console.log(taskCompleted);
+    const { data: { updateATask: Atask } } = await axios.patch(`tasks/${id}`,
+                                                        { name: taskName,
+                                                          isCompleted: taskCompleted,
+      })
+    console.log(Atask);
+    const { _id: taskID, isCompleted, name, userID, userName } = Atask;
     taskIDDOM.textContent = taskID
     taskNameDOM.value = name
     tempName = name
-    if (completed) {
+    if (isCompleted) {
       taskCompletedDOM.checked = true
     }
     formAlertDOM.style.display = 'block'
     formAlertDOM.textContent = `success, edited task`
     formAlertDOM.classList.add('text-success')
-  } catch (error) {
+  }
+  catch (error) {
     console.error(error)
     taskNameDOM.value = tempName
     formAlertDOM.style.display = 'block'
@@ -66,3 +67,4 @@ editFormDOM.addEventListener('submit', async (e) => {
     formAlertDOM.classList.remove('text-success')
   }, 3000)
 })
+//Back to Task btn

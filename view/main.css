@@ -226,6 +226,12 @@ textarea {
 .task-form .form-alert {
   margin-top: 1rem;
 }
+.logout-btn{
+  margin-top: 2rem;
+  margin-left: 42rem;
+  width: 15%;
+  
+}
 .submit-btn {
   width: 100%;
   margin-top: 1rem;
@@ -431,7 +437,7 @@ form > :last-child {
 .back-link {
   display: block;
   width: 250px;
-  margin: 0 auto;
+  margin-left: 42rem;
   text-align: center;
   margin-top: 6rem;
   background: var(--black);
