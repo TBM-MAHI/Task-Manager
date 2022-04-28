@@ -10,7 +10,15 @@ const TaskSchema = new mongoose.Schema({
     isCompleted: {
         type: Boolean,
         default: false
-    }
+    },
+    userID: {
+        type: String,
+        required:true
+    },
+    userName: {
+        type: String,
+        required:true
+}
 })
 const UserSchema = new mongoose.Schema({
     name: {
