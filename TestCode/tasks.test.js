@@ -1,16 +1,17 @@
-const { getAllTask, getAtask } = require('./mockaxios');
-describe('Verifying ALL task', () => {
-    test("ALL TASK", async () => {
+const { getAllTask, getAtask } = require('./TestMethods');
+
+describe('Verifying User And Task', () => {
+    test("A Task", async () => {
         const result = await getAllTask();
         const { isCompleted, name,userName,userID } = result[0];
-        expect( result.length ).toBe(4);
-        expect(name).toBe('VIXENrt');
+        expect( result.length ).toBe(3);
+        expect(name).toBe('cse350 quiz at 7 PM.');
     })
 });
 
-/* describe('Verifying a task', () => {
-    test("SINGLE TASK", async () => {
+describe('Verifying Single task', () => {
+    test("UserName", async () => {
         const result = await  getAtask();
-        expect(result).toBe("cse350 quiz at 7 PM.");
+        expect(result).toBe("mahi");
     })
-}); */
+});
