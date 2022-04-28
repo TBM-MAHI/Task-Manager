@@ -7,13 +7,13 @@ const getAllTask = () => {
                 })
                 .catch((err)=> console.log("ERROR ",err))
 }
-const getAtask = () => 
-           axios.get("http://localhost:3000/tasks/62667d5f8b5b2ed8df66121a")
-                .then((res) => {
-                        //console.log( res.data);
-                        let { SingleTask: { Atask: isCompleted, name, userName, userID } }= res.data;
-                        return userName;
-                })
-                .catch((err) => console.log("ERROR",err))
 
-module.exports = { getAllTask, getAtask }
+const getUserinfo = () => {
+        return axios.get("http://localhost:3000/tasks/login/john/rt87@")
+                   .then((res) => {
+                           const { getUser: { name } } = res.data;  
+                           return name;
+                    })
+                   .catch((err) => console.log("ERROR", err))
+   }
+module.exports = { getAllTask, getUserinfo }
