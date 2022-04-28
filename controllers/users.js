@@ -24,4 +24,4 @@ const VerifyUser = async (req, res) => {
     }
 }
 
-module.exports = { create_newUser, VerifyUser };
+module.exports = { create_newUser, VerifyUser};
